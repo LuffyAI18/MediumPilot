@@ -15,6 +15,8 @@ import React, { useEffect, useState } from 'react';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import logo from '../assets/mediumpilot.svg';
+import LogoutIcon from '../assets/icons/logout.svg';
+import LogoutHoverIcon from '../assets/icons/logout-hover.svg';
 
 /**
  * Dashboard Page Component
@@ -226,9 +228,23 @@ export default function Dashboard({ user }) {
             <h1 className="text-4xl font-bold mb-4">MediumPilot</h1>
             <button
               onClick={() => signOut(auth)}
-              className="border-2 border-white text-white hover:bg-white hover:text-indigo-600 font-medium py-3 px-8 rounded-full transition-colors"
+              className="group inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-indigo-600 font-medium py-3 px-8 rounded-full transition-colors"
             >
-              Sign Out
+              <span className="relative w-5 h-5 mr-2">
+                <img
+                  src={LogoutIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-5 h-5 opacity-100 group-hover:opacity-0 transition-opacity duration-200"
+                />
+                <img
+                  src={LogoutHoverIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                />
+              </span>
+              <span>Sign Out</span>
             </button>
             {/* Status message */}
             {status && (
